@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Products — Athanikkal Traders</title>
+<meta name="description" content="Browse gypsum boards, cement boards, ceiling channels, grids, tiles, putty and fasteners stocked by Athanikkal Traders, Chelari.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Malayalam:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="products">
+
+<header class="site-header" data-header></header>
+
+<main class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" data-i18n="eyebrow_catalogue"></span>
+      <h2 data-i18n="products_title"></h2>
+      <p data-i18n="price_note"></p>
+    </div>
+
+    <div class="toolbar">
+      <input class="search" type="search" data-search data-i18n-ph="search_ph" aria-label="Search products">
+    </div>
+
+    <div class="chips" data-chips></div>
+
+    <div class="grid" data-grid></div>
+    <p class="empty-msg" data-empty hidden data-i18n="no_results"></p>
+  </div>
+</main>
+
+<footer class="site-footer" data-footer></footer>
+
+<script src="js/products.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const grid   = document.querySelector('[data-grid]');
+  const chips  = document.querySelector('[data-chips]');
+  const search = document.querySelector('[data-search]');
+  const empty  = document.querySelector('[data-empty]');
+
+  let activeCat = new URLSearchParams(location.search).get('cat') || 'all';
+  let query = '';
+
+  function matches(p) {
+    if (activeCat !== 'all' && p.cat !== activeCat) return false;
+    if (!query) return true;
+    const haystack = [p.en, p.ml, p.brand, p.spec].filter(Boolean).join(' ').toLowerCase();
+    return haystack.includes(query);
+  }
+
+  function paintChips() {
+    chips.innerHTML = '';
+    const all = [{ id: 'all', en: t('filter_all'), ml: t('filter_all') }, ...CATEGORIES];
+    all.forEach(cat => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip' + (cat.id === activeCat ? ' is-active' : '');
+      btn.textContent = cat.id === 'all' ? t('filter_all') : tField(cat);
+      btn.addEventListener('click', () => {
+        activeCat = cat.id;
+        history.replaceState(null, '', cat.id === 'all' ? 'products.html' : `?cat=${cat.id}`);
+        paintChips();
+        paintGrid();
+      });
+      chips.append(btn);
+    });
+  }
+
+  function paintGrid() {
+    const found = PRODUCTS.filter(matches);
+    grid.innerHTML = '';
+    found.forEach(p => grid.append(productCard(p)));
+    empty.hidden = found.length > 0;
+  }
+
+  search.addEventListener('input', () => {
+    query = search.value.trim().toLowerCase();
+    paintGrid();
+  });
+
+  document.addEventListener('langchange', () => {
+    paintChips();
+    paintGrid();
+  });
+
+  paintChips();
+  paintGrid();
+});
+</script>
+</body>
+</html>
