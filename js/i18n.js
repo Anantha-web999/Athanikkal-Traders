@@ -119,6 +119,12 @@ function applyLang() {
   document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.classList.toggle('is-active', btn.dataset.langBtn === lang);
   });
+  /* Category names are baked into the HTML by build.js, so they need
+     translating here rather than through STRINGS. */
+  document.querySelectorAll('[data-cat-name]').forEach(node => {
+    const cat = getCategory(node.dataset.catName);
+    if (cat) node.textContent = tField(cat);
+  });
 
   document.dispatchEvent(new CustomEvent('langchange'));
 }

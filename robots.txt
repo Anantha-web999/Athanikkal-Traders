@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /cart.html
+
+Sitemap: https://anantha-web999.github.io/Athanikkal-Traders/sitemap.xml

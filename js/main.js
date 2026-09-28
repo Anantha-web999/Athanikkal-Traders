@@ -15,86 +15,16 @@ function el(tag, className, text) {
   return node;
 }
 
-function renderHeader() {
-  const mount = document.querySelector('[data-header]');
-  if (!mount) return;
-  const page = document.body.dataset.page;
-
-  mount.innerHTML = `
-    <div class="wrap header-inner">
-      <a class="brand" href="index.html">
-        ${LOGO_SVG}
-        <span class="brand-text">
-          <strong>Athanikkal Traders</strong>
-          <small>Chelari · Malappuram</small>
-        </span>
-      </a>
-
-      <nav class="nav">
-        <a href="index.html"    class="${page === 'home' ? 'is-active' : ''}"     data-i18n="nav_home"></a>
-        <a href="products.html" class="${page === 'products' ? 'is-active' : ''}" data-i18n="nav_products"></a>
-        <a href="cart.html"     class="${page === 'cart' ? 'is-active' : ''}"     data-i18n="nav_enquiry"></a>
-      </nav>
-
-      <div class="header-actions">
-        <div class="lang-switch">
-          <button type="button" data-lang-btn="en">EN</button>
-          <button type="button" data-lang-btn="ml">മല</button>
-        </div>
-        <a class="cart-link" href="cart.html" aria-label="Enquiry list">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.6 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
-          <span class="cart-badge" data-cart-badge hidden>0</span>
-        </a>
-      </div>
-    </div>`;
-
-  mount.querySelectorAll('[data-lang-btn]').forEach(btn => {
+/* Header and footer markup is baked in by build.js so the page is complete
+   before JavaScript runs — this only attaches behaviour to it. */
+function wireHeader() {
+  document.querySelectorAll('[data-lang-btn]').forEach(btn => {
     btn.addEventListener('click', () => setLang(btn.dataset.langBtn));
   });
 }
 
-function renderFooter() {
-  const mount = document.querySelector('[data-footer]');
-  if (!mount) return;
-
-  mount.innerHTML = `
-    <div class="wrap footer-inner">
-      <div>
-        ${LOGO_SVG.replace('class="brand-mark"', 'class="footer-logo"')}
-        <p class="muted">${SHOP.addressLines.join('<br>')}</p>
-        <p class="muted"><span data-i18n="gstin_label"></span>: ${SHOP.gstin}</p>
-      </div>
-      <div>
-        <h3 data-i18n="phone_label"></h3>
-        <p><a href="tel:+91${SHOP.phonePrimary}">${SHOP.phonePrimary}</a></p>
-        <p><a href="tel:+91${SHOP.phoneSecondary}">${SHOP.phoneSecondary}</a></p>
-        <p><a href="${SHOP.mapsUrl}" target="_blank" rel="noopener" data-i18n="directions"></a></p>
-      </div>
-      <div>
-        <h3 data-i18n="hours_label"></h3>
-        <div class="footer-hours" data-footer-hours></div>
-      </div>
-      <div>
-        <h3 data-i18n="nav_products"></h3>
-        <ul class="footer-cats"></ul>
-      </div>
-    </div>
-    <div class="wrap footer-base">
-      <span>© ${new Date().getFullYear()} ${SHOP.name}</span>
-      <span data-i18n="order_note"></span>
-    </div>`;
-
-  renderHours(mount.querySelector('[data-footer-hours]'));
-
-  const list = mount.querySelector('.footer-cats');
-  CATEGORIES.forEach(cat => {
-    const li = el('li');
-    const a = el('a', null, tField(cat));
-    a.href = `products.html?cat=${cat.id}`;
-    a.dataset.catLink = cat.id;
-    li.append(a);
-    list.append(li);
-  });
+function wireFooter() {
+  renderHours(document.querySelector('[data-footer-hours]'));
 }
 
 /* `time` is a plain string when it needs no translation ("9:00 AM – 7:00 PM")
@@ -177,8 +107,8 @@ function productCard(product) {
 document.addEventListener('cartchange', updateCartBadge);
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderHeader();
-  renderFooter();
+  wireHeader();
+  wireFooter();
   applyLang();
   updateCartBadge();
 });

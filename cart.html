@@ -17,7 +17,39 @@
 </head>
 <body data-page="cart">
 
-<header class="site-header" data-header></header>
+<header class="site-header" data-header>
+  <!-- build:header -->
+      <div class="wrap header-inner">
+      <a class="brand" href="index.html">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M32 6 L58 58 L46.5 58 L32 28.5 L17.5 58 L6 58 Z"/>
+  <rect x="12.5" y="38" width="39" height="6.5"/>
+</svg>
+        <span class="brand-text">
+          <strong>Athanikkal Traders</strong>
+          <small>Chelari &middot; Malappuram</small>
+        </span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="" data-i18n="nav_home">Home</a>
+        <a href="products.html" class="" data-i18n="nav_products">Products</a>
+        <a href="cart.html" class=" is-active" data-i18n="nav_enquiry">Enquiry</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch">
+          <button type="button" data-lang-btn="en">EN</button>
+          <button type="button" data-lang-btn="ml">&#3374;&#3378;</button>
+        </div>
+        <a class="cart-link" href="cart.html" aria-label="Enquiry list">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.6 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+          <span class="cart-badge" data-cart-badge hidden>0</span>
+        </a>
+      </div>
+    </div>
+      <!-- /build:header -->
+</header>
 
 <main class="section">
   <div class="wrap">
@@ -93,7 +125,49 @@
   </div>
 </main>
 
-<footer class="site-footer" data-footer></footer>
+<footer class="site-footer" data-footer>
+  <!-- build:footer -->
+      <div class="wrap footer-inner">
+      <div>
+        <svg class="footer-logo" viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M32 6 L58 58 L46.5 58 L32 28.5 L17.5 58 L6 58 Z"/>
+  <rect x="12.5" y="38" width="39" height="6.5"/>
+</svg>
+        <p class="muted">AV Arcade, Chullottuparambu Road<br>Chelari, Thenhipalam<br>Malappuram Dist., Kerala - 673635</p>
+        <p class="muted"><span data-i18n="gstin_label">GSTIN</span>: 32ABHFA0870E1ZY</p>
+      </div>
+      <div>
+        <h3 data-i18n="phone_label">Phone</h3>
+        <p><a href="tel:+919061541000">9061541000</a></p>
+        <p><a href="tel:+919656940958">9656940958</a></p>
+        <p><a href="https://maps.google.com/?q=AV+Arcade+Chullottuparambu+Road+Chelari+Thenhipalam+Kerala+673635" target="_blank" rel="noopener" data-i18n="directions">Get directions</a></p>
+      </div>
+      <div>
+        <h3 data-i18n="hours_label">Shop Hours</h3>
+        <div class="footer-hours" data-footer-hours>
+        <div class="hours-row"><span>Monday – Saturday</span><span class="hours-time">9:00 AM – 7:00 PM</span></div>
+        <div class="hours-row"><span>Sunday</span><span class="hours-time">Closed</span></div>
+        </div>
+      </div>
+      <div>
+        <h3 data-i18n="nav_products">Products</h3>
+        <ul class="footer-cats">
+          <li><a href="products.html?cat=gypsum-board" data-cat-name="gypsum-board">Gypsum Boards</a></li>
+          <li><a href="products.html?cat=cement-board" data-cat-name="cement-board">Cement Board (V Board)</a></li>
+          <li><a href="products.html?cat=channel" data-cat-name="channel">Channels &amp; Framing</a></li>
+          <li><a href="products.html?cat=grid" data-cat-name="grid">Ceiling Grid</a></li>
+          <li><a href="products.html?cat=tile" data-cat-name="tile">Ceiling Tiles</a></li>
+          <li><a href="products.html?cat=putty" data-cat-name="putty">Putty &amp; POP</a></li>
+          <li><a href="products.html?cat=fastener" data-cat-name="fastener">Fasteners &amp; Accessories</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap footer-base">
+      <span>&copy; 2026 Athanikkal Traders</span>
+      <span data-i18n="order_note">Orders are confirmed over the phone. No online payment.</span>
+    </div>
+      <!-- /build:footer -->
+</footer>
 
 <script src="js/products.js"></script>
 <script src="js/i18n.js"></script>
