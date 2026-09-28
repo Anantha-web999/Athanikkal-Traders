@@ -5,10 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Athanikkal Traders — Gypsum, False Ceiling &amp; Drywall Materials, Chelari</title>
 <meta name="description" content="Authorised dealer of Gyproc, Everest and Shera. Gypsum boards, cement boards, ceiling channels, grids, putty and fasteners in Chelari, Malappuram. Delivery across Kerala or pickup from shop.">
+
+<!-- Update these absolute URLs if the site moves to a custom domain. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Athanikkal Traders">
+<meta property="og:title" content="Athanikkal Traders — Gypsum &amp; False Ceiling Materials">
+<meta property="og:description" content="Authorised dealer of Gyproc, Everest and Shera. Delivery across Kerala or pickup from our shop in Chelari, Malappuram.">
+<meta property="og:url" content="https://anantha-web999.github.io/Athanikkal-Traders/">
+<meta property="og:image" content="https://anantha-web999.github.io/Athanikkal-Traders/images/logo.png">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0a0a">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="images/logo.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+Malayalam:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HardwareStore",
+  "name": "Athanikkal Traders",
+  "description": "Wholesaler and authorised dealer of gypsum boards, cement boards, false ceiling channels, grids, putty and fasteners.",
+  "image": "https://anantha-web999.github.io/Athanikkal-Traders/images/logo.png",
+  "telephone": "+919061541000",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "AV Arcade, Chullottuparambu Road",
+    "addressLocality": "Chelari, Thenhipalam",
+    "addressRegion": "Kerala",
+    "postalCode": "673635",
+    "addressCountry": "IN"
+  },
+  "areaServed": { "@type": "State", "name": "Kerala" },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:00",
+    "closes": "19:00"
+  }]
+}
+</script>
 </head>
 <body data-page="home">
 
@@ -98,9 +139,22 @@
           <p><a href="tel:+919656940958">9656940958</a></p>
         </div>
         <div class="contact-card">
+          <h3 data-i18n="hours_label"></h3>
+          <div class="hours" data-hours></div>
+        </div>
+        <div class="contact-card">
           <h3 data-i18n="gstin_label"></h3>
           <p style="font-family:var(--mono);font-size:.86rem">32ABHFA0870E1ZY</p>
         </div>
+      </div>
+
+      <div class="map-embed">
+        <iframe
+          title="Athanikkal Traders location"
+          src="https://www.google.com/maps?q=AV%20Arcade%2C%20Chullottuparambu%20Road%2C%20Chelari%2C%20Thenhipalam%2C%20Malappuram%2C%20Kerala%20673635&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
       </div>
     </div>
   </section>
@@ -115,6 +169,7 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('addr').innerHTML = SHOP.addressLines.join('<br>');
+  renderHours(document.querySelector('[data-hours]'));
 
   const grid = document.querySelector('[data-cat-grid]');
 

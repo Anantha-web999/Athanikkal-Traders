@@ -67,6 +67,7 @@ const STRINGS = {
   order_note:    { en: 'Orders are confirmed over the phone. No online payment.', ml: 'ഓർഡർ ഫോണിലൂടെയാണ് സ്ഥിരീകരിക്കുന്നത്. ഓൺലൈൻ പേയ്മെന്റ് ഇല്ല.' },
 
   contact_title: { en: 'Visit or Call Us', ml: 'ഞങ്ങളെ സന്ദർശിക്കുക / വിളിക്കുക' },
+  hours_label:   { en: 'Shop Hours', ml: 'പ്രവൃത്തി സമയം' },
   addr_label:    { en: 'Address', ml: 'വിലാസം' },
   phone_label:   { en: 'Phone', ml: 'ഫോൺ' },
   directions:    { en: 'Get directions', ml: 'വഴി കാണിക്കുക' },

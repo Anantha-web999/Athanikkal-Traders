@@ -71,6 +71,10 @@ function renderFooter() {
         <p><a href="${SHOP.mapsUrl}" target="_blank" rel="noopener" data-i18n="directions"></a></p>
       </div>
       <div>
+        <h3 data-i18n="hours_label"></h3>
+        <div class="footer-hours" data-footer-hours></div>
+      </div>
+      <div>
         <h3 data-i18n="nav_products"></h3>
         <ul class="footer-cats"></ul>
       </div>
@@ -79,6 +83,8 @@ function renderFooter() {
       <span>© ${new Date().getFullYear()} ${SHOP.name}</span>
       <span data-i18n="order_note"></span>
     </div>`;
+
+  renderHours(mount.querySelector('[data-footer-hours]'));
 
   const list = mount.querySelector('.footer-cats');
   CATEGORIES.forEach(cat => {
@@ -89,6 +95,24 @@ function renderFooter() {
     li.append(a);
     list.append(li);
   });
+}
+
+/* `time` is a plain string when it needs no translation ("9:00 AM – 7:00 PM")
+   and a {en, ml} object when it does ("Closed"). */
+function renderHours(mount) {
+  if (!mount) return;
+  const paint = () => {
+    mount.innerHTML = '';
+    SHOP.hours.forEach(slot => {
+      const row = el('div', 'hours-row');
+      row.append(el('span', null, tField(slot.days)));
+      const time = typeof slot.time === 'string' ? slot.time : tField(slot.time);
+      row.append(el('span', 'hours-time', time));
+      mount.append(row);
+    });
+  };
+  document.addEventListener('langchange', paint);
+  paint();
 }
 
 function updateCartBadge() {

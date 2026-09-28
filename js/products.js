@@ -13,7 +13,13 @@ const SHOP = {
   phoneSecondary: '9656940958',
   whatsapp: '919061541000',
   gstin: '32ABHFA0870E1ZY',
-  mapsUrl: 'https://maps.google.com/?q=Athanikkal+Traders+Chelari+Kerala'
+  mapsUrl: 'https://maps.google.com/?q=AV+Arcade+Chullottuparambu+Road+Chelari+Thenhipalam+Kerala+673635',
+
+  /* PLACEHOLDER — confirm the real timings with the shop owner before launch. */
+  hours: [
+    { days: { en: 'Monday – Saturday', ml: 'തിങ്കൾ – ശനി' }, time: '9:00 AM – 7:00 PM' },
+    { days: { en: 'Sunday',            ml: 'ഞായർ' },        time: { en: 'Closed', ml: 'അവധി' } }
+  ]
 };
 
 const CATEGORIES = [

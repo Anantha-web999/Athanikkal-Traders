@@ -498,6 +498,36 @@ html[data-lang="ml"] .contact-card h3 { font-family: var(--mal); letter-spacing:
 .contact-card a { border-bottom: 1px solid var(--line); transition: border-color .15s; }
 .contact-card a:hover { border-bottom-color: var(--ink); }
 
+/* ---------- Shop hours ---------- */
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 5px 0;
+  font-size: .92rem;
+}
+.hours-time { font-family: var(--mono); font-size: .78rem; color: var(--muted); white-space: nowrap; }
+html[data-lang="ml"] .hours-time { font-family: var(--mal); font-size: .86rem; }
+.footer-hours .hours-row { border-bottom: 1px solid rgba(255,255,255,.1); }
+.footer-hours .hours-time { color: rgba(255,255,255,.5); }
+
+/* ---------- Map ---------- */
+.map-embed {
+  margin-top: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  line-height: 0;
+}
+.map-embed iframe {
+  width: 100%;
+  height: 380px;
+  border: 0;
+  /* Desaturated so the map sits inside the monochrome system. */
+  filter: grayscale(1) contrast(1.05);
+}
+@media (max-width: 720px) { .map-embed iframe { height: 280px; } }
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: rgba(255,255,255,.72); }
 .footer-inner { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 40px; padding-block: 62px; }
